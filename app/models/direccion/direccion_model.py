@@ -7,35 +7,44 @@ class Pais(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True)
-    
+    #Relaciones
     provincias = relationship("Provincia", back_populates="pais")
+    direcciones = relationship("Direccion", back_populates="pais")
 
 class Provincia(Base):
     __tablename__ = "provincias"
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True)
+    #Relaciones
     pais_id = Column(Integer, ForeignKey("paises.id"))
     pais = relationship("Pais", back_populates="provincias")
-    
     localidades = relationship("Localidad", back_populates="provincia")
+    direcciones = relationship("Direccion", back_populates="provincia")
 
 class Localidad(Base):
     __tablename__ = "localidades"
 
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, unique=True, index=True)
+    #Relaciones
     provincia_id = Column(Integer, ForeignKey("provincias.id"))
     provincia = relationship("Provincia", back_populates="localidades")
+    direcciones = relationship("Direccion", back_populates="localidad")
 
-class Addres(Base):
+class Direccion(Base):
     __tablename__ = "direcciones"
 
     id = Column(Integer, primary_key=True, index=True)
-    calle = Column(String)
-    altura = Column(Integer)
+    calle = Column(String, nullable=True)
+    altura = Column(Integer, nullable=True)
+    piso = Column(String, nullable=True)
+    dpto = Column(String, nullable=True)
+    entre_calles = Column(String, nullable=True)
+    observaciones = Column(String, nullable=True)
     codigo_postal = Column(Integer, index=True)
-    barrio = Column(String, index=True)
+    barrio = Column(String, index=True, nullable=True)
+    #Relaciones
     localidad_id = Column(Integer, ForeignKey("localidades.id"))
     localidad = relationship("Localidad", back_populates="direcciones")
     provincia_id = Column(Integer, ForeignKey("provincias.id"))

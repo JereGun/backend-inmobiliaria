@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.config import tags_metadata
-from app.routers import direccion
+from app.routers import direccion_routers
 
 app = FastAPI(
     title="API de Gestion Inmobiliaria",
@@ -20,4 +20,4 @@ app = FastAPI(
     openapi_tags=tags_metadata
 )
 
-app.include_router(direccion.router)
+app.include_router(direccion_routers.router)

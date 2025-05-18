@@ -1,0 +1,173 @@
+openapi: "3.0.3"
+info:
+  title: API de Gestión Inmobiliaria
+  description: Esta API permite gestionar una inmobiliaria.
+  version: "1.0.0"
+  contact:
+    name: Gunsett Jeremias
+    email: jere.gunsett@gmail.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: http://localhost:8000
+    description: Servidor local
+paths:
+  /direccion/pais:
+    post:
+      tags:
+        - Dirección
+      summary: Crear un nuevo país
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaisCreate"
+      responses:
+        "200":
+          description: País creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaisOut"
+  /direccion/paises:
+    get:
+      tags:
+        - Dirección
+      summary: Obtener todos los países
+      responses:
+        "200":
+          description: Lista de países
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/PaisOut"
+  /direccion/provincia:
+    post:
+      tags:
+        - Dirección
+      summary: Crear una nueva provincia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProvinciaCreate"
+      responses:
+        "200":
+          description: Provincia creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProvinciaOut"
+  /direccion/provincias:
+    get:
+      tags:
+        - Dirección
+      summary: Obtener todas las provincias
+      responses:
+        "200":
+          description: Lista de provincias
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ProvinciaOut"
+  /direccion/localidad/:
+    post:
+      tags:
+        - Dirección
+      summary: Crear una nueva localidad
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LocalidadCreate"
+      responses:
+        "200":
+          description: Localidad creada exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LocalidadOut"
+  /direccion/localidades/:
+    get:
+      tags:
+        - Dirección
+      summary: Obtener todas las localidades
+      responses:
+        "200":
+          description: Lista de localidades
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LocalidadOut"
+components:
+  schemas:
+    PaisCreate:
+      type: object
+      properties:
+        nombre:
+          type: string
+          description: Nombre oficial del país en español
+          example: Argentina
+    PaisOut:
+      allOf:
+        - $ref: "#/components/schemas/PaisCreate"
+        - type: object
+          properties:
+            id:
+              type: integer
+              description: Identificador único del país
+              example: 1
+    ProvinciaCreate:
+      type: object
+      properties:
+        nombre:
+          type: string
+          description: Nombre oficial de la provincia
+          example: Buenos Aires
+        pais_id:
+          type: integer
+          description: ID del país al que pertenece la provincia
+          example: 1
+    ProvinciaOut:
+      allOf:
+        - $ref: "#/components/schemas/ProvinciaCreate"
+        - type: object
+          properties:
+            id:
+              type: integer
+              description: Identificador único de la provincia
+              example: 1
+            pais:
+              $ref: "#/components/schemas/PaisOut"
+    LocalidadCreate:
+      type: object
+      properties:
+        nombre:
+          type: string
+          description: Nombre oficial de la localidad
+          example: La Plata
+        provincia_id:
+          type: integer
+          description: ID de la provincia a la que pertenece la localidad
+          example: 1
+    LocalidadOut:
+      allOf:
+        - $ref: "#/components/schemas/LocalidadCreate"
+        - type: object
+          properties:
+            id:
+              type: integer
+              description: Identificador único de la localidad
+              example: 1
+            provincia:
+              $ref: "#/components/schemas/ProvinciaOut"
