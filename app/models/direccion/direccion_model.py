@@ -51,3 +51,5 @@ class Direccion(Base):
     provincia = relationship("Provincia", back_populates="direcciones")
     pais_id = Column(Integer, ForeignKey("paises.id"))
     pais = relationship("Pais", back_populates="direcciones")
+    clientes = relationship("Cliente", back_populates="direccion")
+    agentes = relationship("Agente", back_populates="direccion")

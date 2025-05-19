@@ -7,6 +7,8 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '.
 
 from app.database import Base
 from app.models.direccion import direccion_model
+from app.models.cliente import cliente_model
+from app.models.agente import agente_model
 from sqlalchemy import pool
 
 from alembic import context
