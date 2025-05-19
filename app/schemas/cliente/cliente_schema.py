@@ -1,7 +1,8 @@
 from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 from datetime import date, datetime
-from app.models.cliente.cliente_model import TipoDocumentoEnum, GeneroEnum, SituacionFiscalEnum
+from app.models.enums import TipoDocumentoEnum, GeneroEnum, SituacionFiscalEnum
+
 
 # TODO Cliente-Schema
 class ClienteBase(BaseModel):

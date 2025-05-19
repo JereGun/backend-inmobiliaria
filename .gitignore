@@ -205,4 +205,6 @@ pip-selfcheck.json
 .history
 .ionide
 
+# Alembic
+versions/
 # End of https://www.toptal.com/developers/gitignore/api/venv,python,visualstudiocode

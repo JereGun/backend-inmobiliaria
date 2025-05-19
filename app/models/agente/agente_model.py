@@ -1,6 +1,6 @@
 from app.database import Base
-from sqlalchemy import Column, Boolean, Integer, String, ForeignKey, DateTime, Enum as SQLAlchemyEnum
-from app.models.cliente.cliente_model import TipoDocumentoEnum
+from sqlalchemy import Column, Boolean, Integer, String, ForeignKey, DateTime
+from app.models.enums import tipo_documento_enum
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -10,7 +10,7 @@ class Agente(Base):
     id = Column(Integer, primary_key=True, index=True)
     nombre = Column(String, nullable=False)
     apellido = Column(String, nullable=False)
-    tipo_documento = Column(SQLAlchemyEnum(TipoDocumentoEnum, name="tipo_documento_enum", create_type=False), nullable=False, default=TipoDocumentoEnum.DNI)
+    tipo_documento = Column(tipo_documento_enum, nullable=False, default="DNI")
     numero_documento = Column(String, unique=True, index=True)
     telefono = Column(String, nullable=False)
     email = Column(String(255), nullable=False)
