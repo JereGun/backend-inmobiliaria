@@ -1,4 +1,4 @@
-from app.database import Base
+from app.core.database import Base
 from sqlalchemy import Column, Boolean, Integer, String, ForeignKey, DateTime
 from app.models.enums import tipo_documento_enum
 from sqlalchemy.orm import relationship
@@ -20,5 +20,7 @@ class Agente(Base):
     licencia = Column(String, nullable=False)
     fecha_alta = Column(DateTime, nullable=False, default=datetime.utcnow)
     fecha_modificacion = Column(DateTime, nullable=True)
-    # Relacion con Direccion
+    # Relaciones
     direccion = relationship("Direccion", back_populates="agentes")
+    propiedades = relationship("Propiedad", back_populates="agente")
+    imagenes = relationship("ImagenAgente", back_populates="agente")

@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 from datetime import date, datetime
 from app.models.enums import TipoDocumentoEnum, GeneroEnum, SituacionFiscalEnum
+from app.schemas.direccion import DireccionCreateNested
 
 
 # TODO Cliente-Schema
@@ -20,7 +21,7 @@ class ClienteBase(BaseModel):
 
 class ClienteCreate(ClienteBase):
     """Esquema para crear un nuevo cliente"""
-    pass
+    direccion: Optional[DireccionCreateNested] = Field(None, title="Dirección del cliente", description="Dirección del cliente para crear")
 
 class ClienteOut(ClienteBase):
     id: int = Field(..., title="ID del cliente", description="Identificador único del cliente")

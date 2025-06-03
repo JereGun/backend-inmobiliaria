@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from app.config import tags_metadata
-from app.routers import direccion_routers
-from app.routers import cliente_routers
-from app.routers import agente_routers
+from fastapi.staticfiles import StaticFiles
+from app.core.config import tags_metadata
+from app.api.v1.routes import direccion
+from app.api.v1.routes import cliente
+from app.api.v1.routes import agente
 
 app = FastAPI(
     title="API de Gestion Inmobiliaria",
@@ -22,6 +23,8 @@ app = FastAPI(
     openapi_tags=tags_metadata
 )
 
-app.include_router(direccion_routers.router)
-app.include_router(cliente_routers.router)
-app.include_router(agente_routers.router)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+app.include_router(direccion.router)
+app.include_router(cliente.router)
+app.include_router(agente.router)

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Date
 from sqlalchemy.orm import relationship
-from app.database import Base
+from app.core.database import Base
 from datetime import datetime
 from app.models.enums import tipo_documento_enum, genero_enum, situacion_fiscal_enum
 
@@ -23,3 +23,4 @@ class Cliente (Base):
     #Relaciones
     direccion_id = Column(Integer, ForeignKey("direcciones.id"), nullable=True)
     direccion = relationship("Direccion", back_populates="clientes")
+    propiedades = relationship("Propiedad", back_populates="propietario")

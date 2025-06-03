@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 from sqlalchemy.orm import joinedload
-from app.models.direccion.direccion_model import Provincia, Localidad
-import app.schemas.direccion.direccion_schema as schemas
-import app.models.direccion.direccion_model as models
-from app.database import get_db
+from app.models.direccion import Provincia, Localidad
+import app.schemas.direccion as schemas
+import app.models.direccion as models
+from app.core.database import get_db
 
 router = APIRouter(
     prefix="/direccion",

@@ -88,3 +88,17 @@ class DireccionOut(DireccionBase):
     model_config = {
         "from_attributes": True
     }
+
+class DireccionCreateNested(DireccionBase):
+    """Esquema para crear una neuva direccion con datos anidados"""
+    calle: str = Field(..., title="Calle", description="Nombre de la calle")
+    altura: int = Field(..., title="Altura", description="Numero de la calle")
+    piso: Optional[str] = Field(None, title="Piso", description="Numero de piso de la direccion")
+    dpto: Optional[str] = Field(None, title="Departamento", description="Numero de departamento de la direccion")
+    entre_calles: Optional[str] = Field(None, title="Entre calles", description="Nombre de las calles entre las que se encuentra la direccion")
+    observaciones: Optional[str] = Field(None, title="Observaciones", description="Observaciones adicionales sobre la direccion")
+    codigo_postal: int = Field(..., title="Codigo Postal", description="Codigo postal de la direccion")
+    barrio: str = Field(..., title="Barrio", description="Nombre del barrio")
+    localidad_id: int = Field(..., title="ID de la localidad", description="ID de la localidad a la que pertenece la direccion.")
+    provincia_id: int = Field(..., title="ID de la provincia", description="ID de la provincia a la que pertenece la direccion.")
+    pais_id: int = Field(..., title="ID del pais", description="ID del pais al que pertenece la direccion.")

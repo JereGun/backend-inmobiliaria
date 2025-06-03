@@ -1,9 +1,9 @@
 from sqlalchemy.orm import Session
 from datetime import date, datetime
-from app.database import SessionLocal
-from app.models.direccion.direccion_model import Direccion, Localidad, Provincia, Pais
-from app.models.cliente.cliente_model import Cliente
-from app.models.agente.agente_model import Agente
+from app.core.database import SessionLocal
+from app.models.direccion import Direccion, Localidad, Provincia, Pais
+from app.models.cliente import Cliente
+from app.models.agente import Agente
 
 # Enums
 from app.models.enums import tipo_documento_enum, genero_enum, situacion_fiscal_enum

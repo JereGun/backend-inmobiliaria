@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 from datetime import date, datetime
 from app.models.enums import TipoDocumentoEnum
+from app.schemas.direccion import DireccionCreateNested
 
 
 class AgenteBase(BaseModel):
@@ -18,7 +19,7 @@ class AgenteBase(BaseModel):
 
 class AgenteCreate(AgenteBase):
     """Esquema para crear un nuevo agente"""
-    pass
+    direccion: Optional[DireccionCreateNested] = Field(None, title="Dirección del agente", description="Dirección del agente para crear")
 
 class AgenteOut(AgenteBase):
     id: int = Field(..., title="ID del agente", description="Identificador único del agente")

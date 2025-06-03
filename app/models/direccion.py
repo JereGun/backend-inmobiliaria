@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from app.database import Base
+from app.core.database import Base
 
 class Pais(Base):
     __tablename__ = "paises"
@@ -53,3 +53,4 @@ class Direccion(Base):
     pais = relationship("Pais", back_populates="direcciones")
     clientes = relationship("Cliente", back_populates="direccion")
     agentes = relationship("Agente", back_populates="direccion")
+    propiedades = relationship("Propiedad", back_populates="direccion")
