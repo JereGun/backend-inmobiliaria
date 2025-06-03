@@ -27,7 +27,7 @@ class Propiedad (Base):
     amoblado = Column(Boolean, nullable=True)
     superficie_cubierta = Column(Integer, nullable=True)
     superficie_descubierta = Column(Integer, nullable=True)
-    superficie_total = Column(Integer, nullable=True, default=superficie_cubierta + superficie_descubierta)
+    superficie_total = Column(Integer, nullable=True) # Removed problematic default
     agente_id = Column(Integer, ForeignKey("agentes.id"), nullable=True) # Agente FK
     fecha_creacion = Column(DateTime, default=datetime.utcnow)
     fecha_modificacion = Column(DateTime, nullable=True)

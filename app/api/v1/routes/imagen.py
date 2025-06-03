@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, Path
 from sqlalchemy.orm import Session
 from typing import List
+import logging # Added import
 
 from app.core.database import get_db
-from schemas import (
+from app.schemas import ( # Changed to app.schemas
     ImagenPropiedadCreate, 
     ImagenAgenteCreate, 
     ImagenPropiedadOut, 
@@ -11,7 +12,7 @@ from schemas import (
     ImagenUploadResponse,
     EstablecerImagenPrincipalRequest
 )
-import crud.imagenes as crud_imagenes  # Importamos el módulo de CRUD que acabamos de crear
+from app.crud import imagenes as crud_imagenes # Changed to app.crud
 
 # Configurar logger
 logger = logging.getLogger(__name__)

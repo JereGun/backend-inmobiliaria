@@ -82,3 +82,14 @@ estado_enum = ENUM (
     name="estado_enum",
     create_type=False
 )
+
+class EstadoContratoEnum(str, enum.Enum):
+    VIGENTE = "VIGENTE"
+    FINALIZADO = "FINALIZADO"
+    RESCINDIDO = "RESCINDIDO"
+
+estado_contrato_enum = ENUM(
+    EstadoContratoEnum,
+    name="estado_contrato_enum",
+    create_type=False
+)

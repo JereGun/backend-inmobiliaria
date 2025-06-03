@@ -1,4 +1,4 @@
-from typing import Optional, List
+from typing import Optional, List, Literal # Added Literal
 from pydantic import BaseModel, HttpUrl, Field, validator
 from datetime import datetime
 
@@ -40,8 +40,7 @@ class ImagenPropiedadCreate(ImagenCreate):
     """Esquema para crear una nueva imagen de propiedad"""
     propiedad_id: int = Field(..., title="ID de la propiedad", 
                              description="ID de la propiedad a la que pertenece la imagen")
-    tipo_imagen: str = Field("propiedad", const=True, 
-                           description="Tipo de relación para la imagen (siempre 'propiedad')")
+    tipo_imagen: Literal["propiedad"] = "propiedad" # Changed to Literal
 
 class ImagenPropiedadOut(ImagenOut):
     """Esquema para mostrar una imagen de propiedad"""
@@ -53,8 +52,7 @@ class ImagenAgenteCreate(ImagenCreate):
     """Esquema para crear una nueva imagen de agente"""
     agente_id: int = Field(..., title="ID del agente", 
                           description="ID del agente al que pertenece la imagen")
-    tipo_imagen: str = Field("agente", const=True, 
-                           description="Tipo de relación para la imagen (siempre 'agente')")
+    tipo_imagen: Literal["agente"] = "agente" # Changed to Literal
 
 class ImagenAgenteOut(ImagenOut):
     """Esquema para mostrar una imagen de agente"""
