@@ -93,3 +93,45 @@ estado_contrato_enum = ENUM(
     name="estado_contrato_enum",
     create_type=False
 )
+
+# At the end of the file, before any other potential code
+class TipoFacturaEnum(str, enum.Enum):
+    ALQUILER = "ALQUILER"
+    VENTA = "VENTA"
+    SERVICIO_EXTRA = "SERVICIO_EXTRA"
+    NOTA_CREDITO = "NOTA_CREDITO" # For refunds or adjustments
+
+tipo_factura_enum = ENUM(
+    TipoFacturaEnum,
+    name="tipo_factura_enum",
+    create_type=False
+)
+
+class EstadoPagoFacturaEnum(str, enum.Enum):
+    PENDIENTE = "PENDIENTE"
+    PAGADA = "PAGADA"
+    PAGADA_PARCIALMENTE = "PAGADA_PARCIALMENTE"
+    VENCIDA = "VENCIDA"
+    ANULADA = "ANULADA"
+
+estado_pago_factura_enum = ENUM(
+    EstadoPagoFacturaEnum,
+    name="estado_pago_factura_enum",
+    create_type=False
+)
+
+# Add before other potential non-class/enum definitions if any at the end of file
+class MetodoPagoEnum(str, enum.Enum):
+    EFECTIVO = "EFECTIVO"
+    TRANSFERENCIA_BANCARIA = "TRANSFERENCIA_BANCARIA"
+    TARJETA_CREDITO = "TARJETA_CREDITO"
+    TARJETA_DEBITO = "TARJETA_DEBITO"
+    MERCADO_PAGO = "MERCADO_PAGO" # Common in Argentina
+    CHEQUE = "CHEQUE"
+    OTRO = "OTRO"
+
+metodo_pago_enum = ENUM(
+    MetodoPagoEnum,
+    name="metodo_pago_enum",
+    create_type=False
+)

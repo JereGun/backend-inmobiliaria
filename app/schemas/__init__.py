@@ -10,6 +10,8 @@ from .imagen import (
     ImagenUploadResponse,
     EstablecerImagenPrincipalRequest
 )
+from .factura import Factura, FacturaCreate, FacturaUpdate
+from .pago import Pago, PagoCreate, PagoUpdate
 
 __all__ = [
     "ContratoAlquiler",
@@ -24,4 +26,10 @@ __all__ = [
     "ImagenAgenteOut",
     "ImagenUploadResponse",
     "EstablecerImagenPrincipalRequest",
+    "Factura",
+    "FacturaCreate",
+    "FacturaUpdate",
+    "Pago",
+    "PagoCreate",
+    "PagoUpdate",
 ]

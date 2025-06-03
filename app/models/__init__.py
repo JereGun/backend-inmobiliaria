@@ -4,6 +4,8 @@ from app.models.agente import Agente
 from app.models.cliente import Cliente
 from app.models.propiedad import Propiedad
 from .contrato_alquiler import ContratoAlquiler
+from .factura import Factura
+from .pago import Pago
 
 __all__ = [
     'Pais', 'Provincia', 'Localidad', 'Direccion',
@@ -11,5 +13,7 @@ __all__ = [
     'Agente',
     'Cliente',
     'Propiedad',
-    'ContratoAlquiler'
+    'ContratoAlquiler',
+    'Factura',
+    'Pago'
 ]
