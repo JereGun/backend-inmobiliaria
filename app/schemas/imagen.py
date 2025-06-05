@@ -1,5 +1,5 @@
 from typing import Optional, List, Literal # Added Literal
-from pydantic import BaseModel, HttpUrl, Field, validator
+from pydantic import BaseModel, HttpUrl, Field, field_validator
 from datetime import datetime
 
 # Base para todas las imágenes
@@ -7,7 +7,7 @@ class ImagenBase(BaseModel):
     url: str = Field(..., title="URL de la imagen", description="URL o ruta donde se almacena la imagen")
     tipo: str = Field(..., title="Tipo de imagen", description="Tipo de imagen (ej. 'principal', 'secundaria', 'perfil')")
 
-    @validator('url')
+    @field_validator('url')
     def validate_url(cls, v):
         # Si la URL no tiene http/https, asumimos que es una ruta local
         if not v.startswith(('http://', 'https://')):
