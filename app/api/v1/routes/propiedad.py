@@ -3,11 +3,12 @@ from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 from sqlalchemy import or_, and_
 
-from app.dependencies import get_db, get_current_user
-from app.models.users import User
+from app.core.database import get_db  # Corrected import
+from app.core.auth import get_current_user  # Corrected import
+from app.models.usuario import Usuario as User # Corrected import
 from app.models.propiedad import Propiedad
 from app.schemas.propiedad import PropiedadCreate, PropiedadOut, PropiedadBase
-from app.crud.propiedad import (
+from app.crud.propiedad_crud import ( # Corrected module name
     create_propiedad,
     get_propiedad,
     get_propiedades,

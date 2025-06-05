@@ -12,6 +12,9 @@ from .imagen import (
 )
 from .factura import Factura, FacturaCreate, FacturaUpdate
 from .pago import Pago, PagoCreate, PagoUpdate
+from .usuario import Usuario, UsuarioCreate, UsuarioUpdate, UsuarioInDB
+from .agente import Agente, AgenteCreate, AgenteUpdate, AgenteInDB
+from .token import Token, TokenPayload
 
 __all__ = [
     "ContratoAlquiler",
@@ -32,4 +35,14 @@ __all__ = [
     "Pago",
     "PagoCreate",
     "PagoUpdate",
+    "Usuario",
+    "UsuarioCreate",
+    "UsuarioUpdate",
+    "UsuarioInDB",
+    "Agente",
+    "AgenteCreate",
+    "AgenteUpdate",
+    "AgenteInDB",
+    "Token",
+    "TokenPayload",
 ]

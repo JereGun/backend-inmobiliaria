@@ -6,6 +6,7 @@ from app.api.v1.routes import cliente
 from app.api.v1.routes import agente
 from app.api.v1.routes import propiedad
 from app.api.v1.routes import contratos_alquiler as contratos_alquiler_router
+from app.api.v1.routes import login as login_router_module
 
 app = FastAPI(
     title="API de Gestion Inmobiliaria",
@@ -31,3 +32,4 @@ app.include_router(direccion.router)
 app.include_router(cliente.router)
 app.include_router(agente.router)
 app.include_router(contratos_alquiler_router.router, prefix="/api/v1/contratos-alquiler", tags=["Contratos Alquiler"])
+app.include_router(login_router_module.router, prefix="/api/v1", tags=["Login"])

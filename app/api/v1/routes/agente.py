@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 # TODO Agente-Routers
-@router.post("/agente", response_model=schemas.AgenteOut, response_model_exclude_unset=True)
+@router.post("/agente", response_model=schemas.Agente, response_model_exclude_unset=True)
 def crear_agente(agente: schemas.AgenteCreate, db: Session = Depends(get_db)):
     db_agente = models.Agente(**agente.model_dump())
     db.add(db_agente)
@@ -19,18 +19,18 @@ def crear_agente(agente: schemas.AgenteCreate, db: Session = Depends(get_db)):
     db.refresh(db_agente)
     return db_agente
 
-@router.get("/agentes", response_model=List[schemas.AgenteOut], response_model_exclude_unset=True)
+@router.get("/agentes", response_model=List[schemas.Agente], response_model_exclude_unset=True)
 def obtener_agentes(db: Session = Depends(get_db)):
     return db.query(models.Agente).all()
 
-@router.get("/agente/{agente_id}", response_model=schemas.AgenteOut, response_model_exclude_unset=True)
+@router.get("/agente/{agente_id}", response_model=schemas.Agente, response_model_exclude_unset=True)
 def obtener_agente(agente_id: int, db: Session = Depends(get_db)):
     db_agente = db.query(models.Agente).filter(models.Agente.id == agente_id).first()
     if not db_agente:
         raise HTTPException(status_code=404, detail="Agente no encontrado")
     return db_agente
 
-@router.put("/agente/{agente_id}", response_model=schemas.AgenteOut, response_model_exclude_unset=True)
+@router.put("/agente/{agente_id}", response_model=schemas.Agente, response_model_exclude_unset=True)
 def actualizar_agente(agente_id: int, agente: schemas.AgenteCreate, db: Session = Depends(get_db)):
     db_agente = db.query(models.Agente).filter(models.Agente.id == agente_id).first()
     if not db_agente:
@@ -53,7 +53,7 @@ def eliminar_agente(agente_id: int, db: Session = Depends(get_db)):
     db.commit()
     return None
 
-@router.get("/agente/activos", response_model=List[schemas.AgenteOut], response_model_exclude_unset=True)
+@router.get("/agente/activos", response_model=List[schemas.Agente], response_model_exclude_unset=True)
 def obtener_agentes_activos(db: Session = Depends(get_db)):
     return db.query(models.Agente).filter(models.Agente.activo is True).all()
 

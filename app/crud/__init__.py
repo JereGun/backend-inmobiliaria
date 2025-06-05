@@ -12,6 +12,8 @@ from . import imagen_crud as imagenes
 from . import factura_crud
 from . import pago_crud
 from . import propiedad_crud # Added as per plan
+from .usuario_crud import usuario
+from .agente_crud import agente
 
 # It's generally better to expose specific functions if that's the desired interface,
 # or consistently expose modules. The current __all__ is mixed.
@@ -32,4 +34,6 @@ __all__ = [
     "factura_crud",
     "pago_crud",
     "propiedad_crud",
+    "usuario",
+    "agente",
 ]

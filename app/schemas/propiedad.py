@@ -4,7 +4,7 @@ from datetime import datetime
 from app.models.enums import TipoPropiedadEnum, TipoOperacionEnum, EstadoEnum
 from app.schemas.direccion import DireccionOut
 from app.schemas.cliente import ClienteOut
-from app.schemas.agente import AgenteOut
+from app.schemas.agente import Agente # Changed from AgenteOut
 from app.schemas.direccion import DireccionCreateNested
 
 
@@ -65,7 +65,7 @@ class PropiedadOut(PropiedadBase):
     fecha_modificacion: Optional[datetime] = Field(None, title="Fecha de modificación", description="Fecha de última modificación de la propiedad")
     direccion: Optional[DireccionOut] = Field(None, title="Dirección", description="Dirección asociada a la propiedad")
     propietario: Optional[ClienteOut] = Field(None, title="Propietario", description="Propietario asociado a la propiedad")
-    agente: Optional[AgenteOut] = Field(None, title="Agente", description="Agente asociado a la propiedad")
+    agente: Optional[Agente] = Field(None, title="Agente", description="Agente asociado a la propiedad") # Changed from AgenteOut
     
     @property
     def superficie_total(self) -> Optional[int]:

@@ -6,6 +6,7 @@ from app.models.propiedad import Propiedad
 from .contrato_alquiler import ContratoAlquiler
 from .factura import Factura
 from .pago import Pago
+from .usuario import Usuario
 
 __all__ = [
     'Pais', 'Provincia', 'Localidad', 'Direccion',
@@ -15,5 +16,6 @@ __all__ = [
     'Propiedad',
     'ContratoAlquiler',
     'Factura',
-    'Pago'
+    'Pago',
+    'Usuario'
 ]

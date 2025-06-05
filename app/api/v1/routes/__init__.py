@@ -4,6 +4,7 @@ from . import direccion
 from . import imagen
 # from . import propiedad # Temporarily commented out for testing
 from . import contratos_alquiler
+from . import login
 
 __all__ = [
     "agente",
@@ -12,4 +13,5 @@ __all__ = [
     "direccion",
     "imagen",
     # "propiedad", # Temporarily commented out for testing
+    "login",
 ]
