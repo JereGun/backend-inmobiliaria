@@ -4,6 +4,7 @@ from app.core.config import tags_metadata
 from app.api.v1.routes import direccion
 from app.api.v1.routes import cliente
 from app.api.v1.routes import agente
+from app.api.v1.routes import propiedad
 from app.api.v1.routes import contratos_alquiler as contratos_alquiler_router
 
 app = FastAPI(
@@ -25,7 +26,7 @@ app = FastAPI(
 )
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
+app.include_router(propiedad.router, prefix="/api/v1/propiedades", tags=["Propiedades"])
 app.include_router(direccion.router)
 app.include_router(cliente.router)
 app.include_router(agente.router)

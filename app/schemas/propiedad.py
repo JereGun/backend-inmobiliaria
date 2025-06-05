@@ -23,7 +23,7 @@ class PropiedadBase(BaseModel):
     amoblado: Optional[bool] = Field(None, title="Amoblado", description="Indica si la propiedad está amoblada o no")
     superficie_cubierta: Optional[int] = Field(None, title="Superficie cubierta", description="Superficie cubierta en m2")
     superficie_descubierta: Optional[int] = Field(None, title="Superficie descubierta", description="Superficie descubierta en m2")
-    estado: EstadoEnum = Field(EstadoEnum.BORRADOR, title="Estado", description="Estado de la propiedad (ej. 'Borrador', 'Publicada', etc.)")
+    estado: EstadoEnum = Field(EstadoEnum.borrador, title="Estado", description="Estado de la propiedad (ej. 'Borrador', 'Publicada', etc.)")
     direccion_id: int = Field(..., title="ID de la dirección", description="ID de la dirección de la propiedad")  # Cambio a obligatorio
     propietario_id: Optional[int] = Field(None, title="ID del propietario", description="ID del propietario de la propiedad")
     agente_id: Optional[int] = Field(None, title="ID del agente", description="ID del agente a cargo de la propiedad")

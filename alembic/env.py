@@ -9,6 +9,8 @@ from app.core.database import Base
 from app.models import direccion
 from app.models import cliente
 from app.models import agente
+from app.models import propiedad
+from app.models import contrato_alquiler
 from sqlalchemy import pool
 
 from alembic import context

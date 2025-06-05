@@ -31,6 +31,7 @@ class Propiedad (Base):
     agente_id = Column(Integer, ForeignKey("agentes.id"), nullable=True) # Agente FK
     fecha_creacion = Column(DateTime, default=datetime.utcnow)
     fecha_modificacion = Column(DateTime, nullable=True)
+    portada_id = Column(Integer, ForeignKey("imagenes_propiedad.id", use_alter=True, name="fk_propiedad_portada"), nullable=True) # Imagen para Portada FK
     # Relaciones
     direccion = relationship("Direccion", back_populates="propiedades")
     propietario = relationship("Cliente", back_populates="propiedades")

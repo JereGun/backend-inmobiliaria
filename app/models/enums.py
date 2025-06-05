@@ -42,7 +42,7 @@ situacion_fiscal_enum = ENUM (
 )
 
 # Enum para la propiedad
-class TipoPropeidadEnum(str, enum.Enum):
+class TipoPropiedadEnum(str, enum.Enum):
     casa = "Casa"
     departamento = "Departamento"
     oficina = "Oficina"
@@ -53,7 +53,7 @@ class TipoPropeidadEnum(str, enum.Enum):
     otro = "Otro"
 
 tipo_propiedad_enum = ENUM (
-    TipoPropeidadEnum,
+    TipoPropiedadEnum,
     name="tipo_propiedad_enum",
     create_type=False
 )
@@ -126,7 +126,7 @@ class MetodoPagoEnum(str, enum.Enum):
     TRANSFERENCIA_BANCARIA = "TRANSFERENCIA_BANCARIA"
     TARJETA_CREDITO = "TARJETA_CREDITO"
     TARJETA_DEBITO = "TARJETA_DEBITO"
-    MERCADO_PAGO = "MERCADO_PAGO" # Common in Argentina
+    MERCADO_PAGO = "MERCADO_PAGO"
     CHEQUE = "CHEQUE"
     OTRO = "OTRO"
 

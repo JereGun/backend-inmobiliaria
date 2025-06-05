@@ -71,5 +71,5 @@ class ImagenUploadResponse(BaseModel):
 # Esquema para establecer imagen como principal/portada
 class EstablecerImagenPrincipalRequest(BaseModel):
     """Esquema para establecer una imagen como principal/portada"""
-    imagen_id: int = Field(..., title="ID de la imagen", 
+    imagen_id: int = Field(..., title="ID de la imagen",
                           description="ID de la imagen que será establecida como principal/portada")
